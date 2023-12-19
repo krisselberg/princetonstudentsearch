@@ -8,16 +8,13 @@ function Search() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/search`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ query }),
-      }
-    );
+    const response = await fetch("/api/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query }),
+    });
     const data = await response.json();
     setResults(data);
   };

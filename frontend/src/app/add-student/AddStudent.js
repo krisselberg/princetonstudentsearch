@@ -18,18 +18,14 @@ function AddStudent() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/add-student`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(studentData),
-        }
-      );
+      const response = await fetch("/api/add-student", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(studentData),
+      });
       if (response.ok) {
-        // Handle success
         alert("Student added successfully");
         setStudentData({
           firstName: "",
@@ -39,7 +35,6 @@ function AddStudent() {
           description: "",
         });
       } else {
-        // Handle error
         alert("Failed to add student");
       }
     } catch (error) {
@@ -49,15 +44,15 @@ function AddStudent() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <form onSubmit={handleSubmit} className="mb-4">
+    <div className="bg-gray-100">
+      <form onSubmit={handleSubmit} className="w-full max-w-xs">
         <input
           type="text"
           name="firstName"
           value={studentData.firstName}
           onChange={handleChange}
           placeholder="First Name"
-          className="border border-gray-300 p-2 mr-2 rounded text-black"
+          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
           required
         />
         <input
@@ -66,7 +61,7 @@ function AddStudent() {
           value={studentData.lastName}
           onChange={handleChange}
           placeholder="Last Name"
-          className="border border-gray-300 p-2 mr-2 rounded text-black"
+          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
           required
         />
         <input
@@ -75,7 +70,7 @@ function AddStudent() {
           value={studentData.email}
           onChange={handleChange}
           placeholder="Email"
-          className="border border-gray-300 p-2 mr-2 rounded text-black"
+          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
           required
         />
         <input
@@ -84,17 +79,20 @@ function AddStudent() {
           value={studentData.linkedinUrl}
           onChange={handleChange}
           placeholder="LinkedIn URL"
-          className="border border-gray-300 p-2 mr-2 rounded text-black"
+          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
         />
         <textarea
           name="description"
           value={studentData.description}
           onChange={handleChange}
           placeholder="Description"
-          className="border border-gray-300 p-2 mr-2 rounded text-black"
+          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
           required
         />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        <button
+          type="submit"
+          className="bg-blue-500 text-white p-2 w-full rounded"
+        >
           Add Student
         </button>
       </form>
