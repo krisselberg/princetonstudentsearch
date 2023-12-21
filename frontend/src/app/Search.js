@@ -28,18 +28,15 @@ function Search() {
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search..."
           // make text color black
-          className="border border-gray-300 p-2 mr-2 rounded text-black"
+          className="input mr-2"
         />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        <button type="submit" className="button">
           Search
         </button>
       </form>
-      <div className="w-full max-w-md">
+      <div>
         {results.map((result, index) => (
-          <div
-            key={index}
-            className="bg-white text-black p-5 my-2 shadow-lg rounded"
-          >
+          <div key={index} className="card">
             <h3 className="font-bold text-lg">
               {result.firstName} {result.lastName}
             </h3>

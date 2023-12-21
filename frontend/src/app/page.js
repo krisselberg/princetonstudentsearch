@@ -3,20 +3,15 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100">
+    <div className="page-container">
       <img
         className="w-32 my-4"
         src="/images/ptonlogo.png"
         alt="Princeton Logo"
       />
-      <h1 className="text-3xl font-bold text-gray-800 my-6">
-        Princeton Student Search
-      </h1>
+      <h1 className="header mb-6">Princeton Student Search</h1>
       <Search />
-      <Link
-        href="/add-student"
-        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-      >
+      <Link href="/add-student" className="mt-2 button">
         Add Student
       </Link>
     </div>

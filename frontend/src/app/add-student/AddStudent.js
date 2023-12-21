@@ -44,15 +44,15 @@ function AddStudent() {
   };
 
   return (
-    <div className="bg-gray-100">
-      <form onSubmit={handleSubmit} className="w-full max-w-xs">
+    <div>
+      <form onSubmit={handleSubmit} className="max-w-sm">
         <input
           type="text"
           name="firstName"
           value={studentData.firstName}
           onChange={handleChange}
           placeholder="First Name"
-          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
+          className="input-form"
           required
         />
         <input
@@ -61,7 +61,7 @@ function AddStudent() {
           value={studentData.lastName}
           onChange={handleChange}
           placeholder="Last Name"
-          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
+          className="input-form"
           required
         />
         <input
@@ -70,7 +70,7 @@ function AddStudent() {
           value={studentData.email}
           onChange={handleChange}
           placeholder="Email"
-          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
+          className="input-form"
           required
         />
         <input
@@ -79,20 +79,17 @@ function AddStudent() {
           value={studentData.linkedinUrl}
           onChange={handleChange}
           placeholder="LinkedIn URL"
-          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
+          className="input-form"
         />
         <textarea
           name="description"
           value={studentData.description}
           onChange={handleChange}
           placeholder="Description"
-          className="border border-gray-300 p-2 w-full rounded text-black mb-4"
+          className="input-form"
           required
         />
-        <button
-          type="submit"
-          className="bg-blue-500 text-white p-2 w-full rounded"
-        >
+        <button type="submit" className="button w-full">
           Add Student
         </button>
       </form>
