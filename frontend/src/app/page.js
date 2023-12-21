@@ -1,4 +1,4 @@
-import Search from "@/app/search/Search";
+import Search from "@/app/Search";
 import Link from "next/link";
 
 export default function Home() {
