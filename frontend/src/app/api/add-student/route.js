@@ -3,13 +3,13 @@ import { NextResponse } from "next/server";
 
 // Initialize OpenSearch client
 const opensearchClient = new Client({
-  node: "https://localhost:9200",
+  node: process.env.OPENSEARCH_ENDPOINT || "https://localhost:9200",
   auth: {
-    username: "admin",
-    password: "admin",
+    username: process.env.OPENSEARCH_USERNAME || "admin",
+    password: process.env.OPENSEARCH_PASSWORD || "admin",
   },
   ssl: {
-    rejectUnauthorized: false, // Disable SSL verification for communication between frontend and OpenSearch
+    rejectUnauthorized: true, // Disable SSL verification (set to false) for communication between frontend and OpenSearch
   },
 });
 

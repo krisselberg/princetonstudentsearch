@@ -77,3 +77,13 @@ POST /students/_doc/
   "description": "Computer Science major graduating in 2025"
 }
 ```
+
+## Production Development Guide (AWS)
+
+### OpenSearch Service Deployment on AWS
+
+TODO
+
+### Frontend NextJS Container Deployment on AWS Elastic Beanstalk
+
+TODO
