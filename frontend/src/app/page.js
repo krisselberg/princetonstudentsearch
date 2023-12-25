@@ -9,7 +9,6 @@ import logout from "@/lib/firebase/auth/logout";
 
 export default function Home() {
   const { user } = useContext(AuthContext); // Access authentication data
-  console.log(user);
 
   if (!user) {
     return <SignIn />;

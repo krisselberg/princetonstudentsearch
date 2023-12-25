@@ -1,20 +1,13 @@
 import { Client } from "@opensearch-project/opensearch";
 import { NextResponse } from "next/server";
-
-// Initialize OpenSearch client
-const opensearchClient = new Client({
-  node: process.env.OPENSEARCH_ENDPOINT || "https://localhost:9200",
-  auth: {
-    username: process.env.OPENSEARCH_USERNAME || "admin",
-    password: process.env.OPENSEARCH_PASSWORD || "admin",
-  },
-  ssl: {
-    rejectUnauthorized: true, // Disable SSL verification (set to false) for communication between frontend and OpenSearch
-  },
-});
+import { getOpenSearchClient } from "@/lib/opensearch/client";
 
 async function addStudent(student) {
   try {
+    const opensearchClient = getOpenSearchClient();
+    console.log("client", opensearchClient);
+    console.log("client nodes", opensearchClient.nodes);
+    console.log("Adding student:", student); // Log the student data being added
     const response = await opensearchClient.index({
       index: "students",
       body: student,
@@ -30,6 +23,7 @@ async function addStudent(student) {
 // Do a named export
 export async function POST(req) {
   const student = await req.json();
+  console.log("Received student data:", student); // Log the received student data
   try {
     const response = await addStudent(student);
     return NextResponse.json({ message: "Student added", response });
