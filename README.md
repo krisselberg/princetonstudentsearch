@@ -131,6 +131,8 @@ First, we must add the proper Firebase configuration for authentication. We curr
 
 8. Copy the proper `firebaseConfig` variable initialization into the `frontend/src/lib/firebase/config.js` file where we set the `firebaseConfig` variable
 
+9. Set `rejectUnauthorized: true` in the `frontend/src/lib/opensearch/service.js` file before deploying the container to a production environment
+
 For quick and simple container deployment, we will upload our application code by ZIP file:
 
 1. Navigate to the AWS Management Console and go to "Elastic Beanstalk".

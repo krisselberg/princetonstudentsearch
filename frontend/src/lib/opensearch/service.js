@@ -9,7 +9,7 @@ export class OpenSearchService {
         password: process.env.OPENSEARCH_PASSWORD || "admin",
       },
       ssl: {
-        rejectUnauthorized: false, // Use "false" for local development and "true" for production
+        rejectUnauthorized: true, // Use "false" for local development and "true" for production
       },
     });
   }
