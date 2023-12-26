@@ -10,11 +10,8 @@ const openai = new OpenAI({
 
 export async function POST(req) {
   try {
-    console.log("creating client");
     const opensearchClient = getOpenSearchClient();
-    console.log("client created");
     const { query } = await req.json();
-    console.log("Received query:", query);
 
     // Description of your OpenSearch data structure
     const dataStructureDescription = `
@@ -54,7 +51,6 @@ export async function POST(req) {
         "${query}"
         Structured Query:
       `;
-    console.log("Prompt:", prompt);
 
     // Send the query to GPT-4
     const completion = await openai.chat.completions.create({
@@ -67,21 +63,17 @@ export async function POST(req) {
       ],
       model: "gpt-4",
     });
-    console.log("GPT-4 response:", completion);
 
     const searchQuery = JSON.parse(completion.choices[0].message.content);
-    console.log("Search query:", searchQuery);
 
     // Execute the query in OpenSearch
     const response = await opensearchClient.search({
       index: "students",
       body: searchQuery,
     });
-    console.log("Search response:", response);
 
     // Format and return results
     const results = response.body.hits.hits.map((hit) => hit._source);
-    console.log("Results:", results);
     return NextResponse.json(results);
   } catch (error) {
     console.error("Error executing search:", error);
