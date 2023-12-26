@@ -15,8 +15,16 @@ function Search() {
       },
       body: JSON.stringify({ query }),
     });
-    const data = await response.json();
-    setResults(data);
+    if (!response.ok) {
+      throw new Error("API response not OK");
+    }
+
+    let data = [];
+    if (response.headers.get("content-type")?.includes("application/json")) {
+      data = await response.json();
+    }
+
+    setResults(Array.isArray(data) ? data : []);
   };
 
   return (

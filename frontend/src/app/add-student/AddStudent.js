@@ -25,8 +25,11 @@ function AddStudent() {
         },
         body: JSON.stringify(studentData),
       });
-      if (response.ok) {
-        alert("Student added successfully");
+      const data = await response.json();
+      console.log("data", data);
+      console.log("response", response);
+      if (data.error) {
+        alert(data.error);
         setStudentData({
           firstName: "",
           lastName: "",
@@ -34,9 +37,16 @@ function AddStudent() {
           linkedinUrl: "",
           description: "",
         });
-      } else {
-        alert("Failed to add student");
+        return;
       }
+      alert("Student added successfully");
+      setStudentData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        linkedinUrl: "",
+        description: "",
+      });
     } catch (error) {
       alert("An error occurred");
       console.error("Error adding student:", error);
