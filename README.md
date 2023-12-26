@@ -6,9 +6,7 @@ An NLP interface for OpenSearch to manage a database of Princeton University stu
 
 ### OpenSearch Docker Deployment
 
-Software:
-
-- Docker and Docker Compose
+Required Software: Docker and Docker Compose
 
 1. Start OpenSearch and its related services by navigating to the /backend directory and running
 
@@ -62,10 +60,17 @@ PUT /students
 
 4. Add indices (students) to the document
 
-There are two ways to go about doing this:
+There are two main ways to go about doing this:
 
-- Run the NextJS app and input students on the ["Add Student" page](http://localhost:3000/add-student)
-- Send a POST request in the OpenSearch dashboard:
+- Run the NextJS app with the following command and input students on the ["Add Student" page](http://localhost:3000/add-student)
+
+```bash
+cd ../frontend
+npm install # (if needed)
+npm run dev
+```
+
+- Send a POST request in the OpenSearch dashboard or using curl:
 
 ```json
 POST /students/_doc/
@@ -126,7 +131,7 @@ First, we must add the proper Firebase configuration for authentication. We curr
 
 8. Copy the proper `firebaseConfig` variable initialization into the `frontend/src/lib/firebase/config.js` file where we set the `firebaseConfig` variable
 
-For quick and simple container deployment, we4 will upload our application code by ZIP file:
+For quick and simple container deployment, we will upload our application code by ZIP file:
 
 1. Navigate to the AWS Management Console and go to "Elastic Beanstalk".
 
