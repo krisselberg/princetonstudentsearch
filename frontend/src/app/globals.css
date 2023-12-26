@@ -50,6 +50,10 @@ body {
   @apply text-3xl font-bold text-gray-800;
 }
 
+.text {
+  @apply text-gray-800;
+}
+
 .page-container {
   @apply flex flex-col items-center justify-center min-h-screen background px-4;
 }
