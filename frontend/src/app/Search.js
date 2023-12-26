@@ -10,6 +10,12 @@ function Search() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    // Do not proceed if query is empty or just whitespace
+    if (!query.trim() || query.length > 50) {
+      alert("Query must be between 1 and 50 characters.");
+      setSearched(false);
+      return;
+    }
     setLoading(true);
     setSearched(true);
     try {

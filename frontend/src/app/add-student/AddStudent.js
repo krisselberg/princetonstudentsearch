@@ -17,6 +17,25 @@ function AddStudent() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validation: Check for empty fields and character limits
+    if (
+      !studentData.firstName.trim() ||
+      studentData.firstName.length > 50 ||
+      !studentData.lastName.trim() ||
+      studentData.lastName.length > 50 ||
+      !studentData.email.trim() ||
+      studentData.email.length > 100 ||
+      studentData.linkedinUrl.length > 100 ||
+      !studentData.description.trim() ||
+      studentData.description.length > 500
+    ) {
+      alert(
+        "Please check your input. Fields cannot be empty and must be within character limits."
+      );
+      return;
+    }
+
     try {
       const response = await fetch("/api/add-student", {
         method: "POST",

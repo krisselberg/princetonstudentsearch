@@ -6,6 +6,11 @@ import { OpenAIService } from "@/lib/openai/service";
 
 export async function POST(req) {
   const { query } = await req.json();
+  if (!query.trim() || query.length > 50) {
+    return NextResponse.json({
+      error: "Query must be between 1 and 50 characters.",
+    });
+  }
 
   // need to instantiate a new objects with every API call to access
   // AWS Elastic Beanstalk environment properties at runtime for correct instantiation,
