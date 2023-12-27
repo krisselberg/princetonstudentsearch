@@ -1,5 +1,9 @@
 # Princeton Student Search
 
+<div align="center">
+    <img src="ptonstudentsearchhome.gif" alt="Princeton Student Search Home Screen" />
+</div>
+
 An NLP interface for OpenSearch to manage a database of Princeton University students and their contact information, integrating GPT-4 for query translation.
 
 ## Local Development Quickstart
